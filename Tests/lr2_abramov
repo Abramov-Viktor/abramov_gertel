@@ -1,0 +1,127 @@
+[TestClass()]
+    public class FileTests
+    {
+        File array;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            double[] mass = { 1, 2, -3, -5, 6 };
+            array = new File(mass);
+        }
+
+        [TestMethod]
+        public void ReadTest()
+        {
+            string path = "C:/Staff/unittest.txt";
+            double[] expected = { 2, 3, 4, 5, 1 };
+            array.Read(path);
+            double[] actual = array.array;
+            for (int i = 0; i < actual.Length; i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+            }
+        }
+
+    }
+[TestClass()]
+    public class NumTests
+    {
+        Num arr;
+        [TestMethod()]
+        public void countTest()
+        {
+            double[] arr = { -1, -0.5, 20, -5, 0.6 };
+            int expected = 3;
+            int actual = Num.count(arr);
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
+
+        [TestMethod()]
+        public void sumTest()
+        {
+            double[] arr = { 2, 0.5, -20, 15 };
+            double expected = -2.5;
+            double actual = Num.sum(arr);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void srTest()
+        {
+            double[] arr = { 5, 10, 15, 60 };
+            double expected = 22.5;
+            double actual = Num.sr(arr);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void MaxTest()
+        {
+            int[] mass = { 50, 24, 13, 45, 30, 0, 2, 8, 90, 100, 10 };
+            int expected = 100;
+            int actual = Num.Max(mass);
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod()]
+        public void MaxTest1()
+        {
+            int[] mass = { -30, -1, -150, 0 };
+            int expected = 0;
+            int actual = Num.Max(mass);
+            Assert.AreEqual(expected, actual);
+        }
+    }
+[TestClass()]
+    public class SymbolTests
+    {
+        [TestMethod()]
+        public void cTest()
+        {
+            string s = "Шла Саша по шоссе и сосала сушку";
+            int expected = 7;
+            int actual = Symbol.c(s);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void upTest()
+        {
+            char[] s = { 'a', 'B', 'c', 'd', 'E', 'F', };
+            string expected = "BEF";
+            string actual = Symbol.up(s);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void cTest1()
+        {
+            string s = "London is the capital of Great Britain";
+            int expected = 7;
+            int actual = Symbol.c(s);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void upTest1()
+        {
+            char[] s = { '1', 'Ш', '2', 'ы', 'Д', 'ь', '_' };
+            string expected = "ШД";
+            string actual = Symbol.up(s);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void upTest2()
+        {
+            char[] s = { '"', '`', '+', '(', '&', 'Ъ', '№' };
+            string expected = "Ъ";
+            string actual = Symbol.up(s);
+            Assert.AreEqual(expected, actual);
+        }
+    }
